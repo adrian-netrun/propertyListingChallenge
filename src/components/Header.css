@@ -1,0 +1,14 @@
+.header__ {
+  text-align: center;
+}
+
+@media screen and (min-width: 320px) {
+  .header__ {
+    text-align: center;
+  }
+
+  .header__heading {
+    margin: 0 auto;
+    font-size: 1.8em;
+  }
+}

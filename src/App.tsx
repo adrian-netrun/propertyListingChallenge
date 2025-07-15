@@ -1,13 +1,13 @@
 import './App.css';
-import useFetchData from './components/useFetchData';
+import useFetchData from './hooks/useFetchData';
+import Header from './components/Header';
 
 function App() {
-  useFetchData();
+  const propertyData = useFetchData();
+  console.log(propertyData);
   return (
     <>
-      <div>
-        <h1>Hello</h1>
-      </div>
+      <Header />
     </>
   );
 }

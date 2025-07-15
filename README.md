@@ -13,3 +13,8 @@ Tools used:
 - Axios
 - git
 - Render.io for hosting
+
+Colors:
+
+- #131726, background color
+- #e0e0e0, text colour

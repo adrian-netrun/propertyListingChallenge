@@ -4,9 +4,9 @@
   font-family: 'Open Sans', Helvetica, sans-serif, system-ui;
   line-height: 1.5;
   font-weight: 400;
-
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #fff;
+  margin: 0 auto;
+  background-color: #131726;
+  color: #e0e0e0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
