@@ -13,6 +13,9 @@ Tools used:
 - Axios
 - git
 - Render.io for hosting
+- Docker
+
+Docker is for production deployment with a server compnent to deploy the build file.
 
 Colors:
 

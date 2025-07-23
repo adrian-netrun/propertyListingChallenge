@@ -4,14 +4,14 @@
 }
 
 @media (min-width: 320px) {
-  #root {
+  body {
     margin: 0 auto;
     font-size: 14px;
   }
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
-  :root {
+  body {
     font-size: 16px;
   }
 }
