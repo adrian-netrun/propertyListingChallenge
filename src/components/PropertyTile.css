@@ -1,0 +1,28 @@
+.prop__tile__ {
+  margin: 1rem;
+  border: 0.1rem white solid;
+  border-radius: 5%;
+}
+
+.prop__tile__img__container__ {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.prop__tile__img__container__ img {
+  width: 90%;
+  height: 90%;
+  border-radius: 5%;
+}
+
+.prop__tile__heading__ {
+  font-weight: 600;
+  text-align: center;
+}
+
+.prop__tile__meta__ {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
