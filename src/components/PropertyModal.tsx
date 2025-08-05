@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './PropertyModal.css';
 interface iModal {
   // data will be everything from PropertyDataType w/o the id
   data: {
@@ -16,25 +16,24 @@ interface iModal {
   };
 }
 
-function ModalTile({ data, isOpen, setIsOpen }) {
+function ModalTile({ data, isOpen, setIsOpen, index }) {
+  const [offer] = useState(data[index]);
+  console.log(offer);
   return (
-    <div className='prop__modal' onClick={(e) => setIsOpen(!isOpen)}>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo impedit
-        asperiores debitis? Voluptatibus dolor ut at deserunt nisi beatae, nobis
-        recusandae, perferendis atque odio necessitatibus quod reiciendis rem
-        eligendi sapiente?
-      </p>
-      <button
-        type='button'
-        className='close'
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-      >
-        Exit
-      </button>
+    <div className='prop__modal__cont'>
+      <div className='prop__modal'>
+        <p>{offer.description}</p>
+        <button
+          type='button'
+          className='close'
+          onClick={(e) => {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }}
+        >
+          Exit
+        </button>
+      </div>
     </div>
   );
 }
@@ -53,11 +52,18 @@ function OpenButton({ setIsOpen, isOpen }) {
   );
 }
 
-function PropertyModal({ data }: iModal) {
+function PropertyModal({ data, index }: iModal) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      {isOpen && <ModalTile isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {isOpen && (
+        <ModalTile
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          data={data}
+          index={index}
+        />
+      )}
       {!isOpen && <OpenButton isOpen={isOpen} setIsOpen={setIsOpen} />}
     </>
   );

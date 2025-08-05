@@ -5,6 +5,7 @@ export type propertyObjectData = {
     bedroom: number;
   };
   id: number;
+  description: string;
   image: string;
   location: string;
   price: number;
