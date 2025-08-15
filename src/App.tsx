@@ -2,9 +2,8 @@ import './App.css';
 import useFetchData from './hooks/useFetchData';
 import Header from './components/Header';
 import Splash from './components/Splash';
-import LocationFilter from './components/LocationFilter';
 import PropertySubHeading from './components/PropertySubHeading';
-import PropertyTile from './components/PropertyTile';
+import DisplayProperty from './components/DisplayProperty';
 
 function App() {
   const propertyData = useFetchData();
@@ -13,9 +12,11 @@ function App() {
     <>
       <Header />
       <Splash />
-      <LocationFilter data={propertyData.location} />
       <PropertySubHeading />
-      <PropertyTile data={propertyData.data} />
+      <DisplayProperty
+        location={propertyData.location}
+        data={propertyData.data}
+      />
     </>
   );
 }

@@ -8,21 +8,23 @@ interface iModal {
       bedroom: number;
     };
     image: string;
+    description: string;
     location: string;
     price: number;
     rating: number;
     superhost: boolean;
     title: string;
   };
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<boolean>;
 }
 
-function ModalTile({ data, isOpen, setIsOpen, index }) {
-  const [offer] = useState(data[index]);
-  console.log(offer);
+function ModalTile({ data, isOpen, setIsOpen }: iModal) {
   return (
     <div className='prop__modal__cont'>
       <div className='prop__modal'>
-        <p>{offer.description}</p>
+        <h3>{data.title}</h3>
+        <p>{data.description}</p>
         <button
           type='button'
           className='close'
@@ -38,7 +40,12 @@ function ModalTile({ data, isOpen, setIsOpen, index }) {
   );
 }
 
-function OpenButton({ setIsOpen, isOpen }) {
+interface iOpenButton {
+  setIsOpen: React.Dispatch<boolean>;
+  isOpen: boolean;
+}
+
+function OpenButton({ setIsOpen, isOpen }: iOpenButton) {
   return (
     <button
       type='button'
@@ -52,17 +59,28 @@ function OpenButton({ setIsOpen, isOpen }) {
   );
 }
 
-function PropertyModal({ data, index }: iModal) {
+interface iPropertyData {
+  data: {
+    capacity: {
+      people: number;
+      bedroom: number;
+    };
+    image: string;
+    description: string;
+    location: string;
+    price: number;
+    rating: number;
+    superhost: boolean;
+    title: string;
+  };
+}
+
+function PropertyModal({ data }: iPropertyData) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       {isOpen && (
-        <ModalTile
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          data={data}
-          index={index}
-        />
+        <ModalTile isOpen={isOpen} setIsOpen={setIsOpen} data={data} />
       )}
       {!isOpen && <OpenButton isOpen={isOpen} setIsOpen={setIsOpen} />}
     </>
