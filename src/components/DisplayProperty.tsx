@@ -11,6 +11,7 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
   const locations: string[] = [...new Set(location)];
   const [selecetedFilters, setSelectedFilters] = useState<string[]>([]);
   const [locationObject, setLocationObject] = useState<propertyObjectData[]>();
+  const [showSuperHost, setShowSuperHost] = useState<boolean>(false);
 
   useEffect(() => {
     setLocationObject([...data]);
@@ -28,17 +29,24 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
 
   useEffect(() => {
     // check if data.location is selected and filter
-    const filtered = data.filter((elm) =>
-      selecetedFilters.includes(elm.location)
-    );
-    // set filtered data to state for rendering
-    setLocationObject([...(filtered ?? [])]);
+    const filtered = data
+      .filter((elm) => {
+        return selecetedFilters.includes(elm.location);
+      })
+      .filter((elm) => {
+        if (!showSuperHost) {
+          return elm;
+        } else if (showSuperHost === elm.superhost) {
+          return elm;
+        }
+      });
 
-    // if no filters selected, reset state
     if (!filtered?.length) {
       setLocationObject([...data]);
+    } else {
+      setLocationObject(filtered);
     }
-  }, [selecetedFilters]);
+  }, [selecetedFilters, showSuperHost]);
 
   return (
     <div className='displayContainer'>
@@ -62,11 +70,20 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
           name='superhost'
           id='superhost'
           className='roundToggle'
+          onChange={() => {
+            setShowSuperHost(!showSuperHost);
+          }}
         />
       </div>
       <div className='displayPropertyGroup'>
         {locationObject?.map((itm, idx) => {
-          return <PropertyTile key={`property-${idx}`} data={itm} />;
+          return (
+            <PropertyTile
+              key={`property-${idx}`}
+              data={itm}
+              showSuper={showSuperHost}
+            />
+          );
         })}
       </div>
     </div>

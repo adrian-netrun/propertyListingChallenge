@@ -4,7 +4,7 @@ import './PropertyTile.css';
 
 interface OpenPopUpEvent extends React.MouseEvent<HTMLDivElement> {}
 
-function PropertyTile({ data }: any) {
+function PropertyTile({ data, showSuper }: any) {
   return (
     <div className='prop__tile__'>
       <div className='prop__tile__img__container__'>
