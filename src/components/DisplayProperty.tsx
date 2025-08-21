@@ -29,7 +29,7 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
   };
 
   useEffect(() => {
-    // check if data.location is selected and filter
+    // check if data.location or showSuperhost === true filter and output
     let filteredData = [...data];
 
     if (selecetedFilters.length > 0) {
