@@ -1,6 +1,7 @@
 import PropertyTile from './PropertyTile';
 import type { propertyObjectData } from '../utils/types/propertyObjectData';
 import { useEffect, useState } from 'react';
+import './DisplayProperty.css';
 
 interface IDisplayProperty {
   location: string[];
@@ -29,23 +30,19 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
 
   useEffect(() => {
     // check if data.location is selected and filter
-    const filtered = data
-      .filter((elm) => {
-        return selecetedFilters.includes(elm.location);
-      })
-      .filter((elm) => {
-        if (!showSuperHost) {
-          return elm;
-        } else if (showSuperHost === elm.superhost) {
-          return elm;
-        }
-      });
+    let filteredData = [...data];
 
-    if (!filtered?.length) {
-      setLocationObject([...data]);
-    } else {
-      setLocationObject(filtered);
+    if (selecetedFilters.length > 0) {
+      filteredData = filteredData.filter((item) =>
+        selecetedFilters.includes(item.location)
+      );
     }
+
+    if (showSuperHost) {
+      filteredData = filteredData.filter((item) => item.superhost === true);
+    }
+
+    setLocationObject(filteredData);
   }, [selecetedFilters, showSuperHost]);
 
   return (
@@ -64,16 +61,15 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
       </div>
       {/* render toggle Superhost Toggle switch */}
       <div className='filterToggle'>
-        <label htmlFor='superhost'>Superhost</label>
+        <label htmlFor='toggle'>Superhost: </label>
         <input
           type='checkbox'
-          name='superhost'
-          id='superhost'
-          className='roundToggle'
-          onChange={() => {
-            setShowSuperHost(!showSuperHost);
-          }}
+          id='toggle'
+          className='checkbox'
+          checked={showSuperHost}
+          onChange={(e) => setShowSuperHost(e.target.checked)}
         />
+        <label htmlFor='toggle' className='switch'></label>
       </div>
       <div className='displayPropertyGroup'>
         {locationObject?.map((itm, idx) => {
