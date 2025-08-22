@@ -25,16 +25,18 @@ function ModalTile({ data, isOpen, setIsOpen }: iModal) {
       <div className='prop__modal'>
         <h3>{data.title}</h3>
         <p>{data.description}</p>
-        <button
-          type='button'
-          className='close'
-          onClick={(e) => {
-            e.preventDefault();
-            setIsOpen(!isOpen);
-          }}
-        >
-          Exit
-        </button>
+        <div className='buttonContainer'>
+          <button
+            type='button'
+            className='close'
+            onClick={(e) => {
+              e.preventDefault();
+              setIsOpen(!isOpen);
+            }}
+          >
+            Exit
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -47,15 +49,17 @@ interface iOpenButton {
 
 function OpenButton({ setIsOpen, isOpen }: iOpenButton) {
   return (
-    <button
-      type='button'
-      className='open'
-      onClick={(e) => {
-        setIsOpen(!isOpen);
-      }}
-    >
-      More Information
-    </button>
+    <div className='buttonContainer'>
+      <button
+        type='button'
+        className='open'
+        onClick={(e) => {
+          setIsOpen(!isOpen);
+        }}
+      >
+        More Information
+      </button>
+    </div>
   );
 }
 

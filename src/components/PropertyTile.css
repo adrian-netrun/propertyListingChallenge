@@ -1,6 +1,7 @@
 .prop__tile__ {
-  margin: 1rem;
-  border: 0.1rem white solid;
+  margin: 1rem auto;
+  width: 75%;
+  border: 0.01rem darkgray solid;
   border-radius: 5%;
 }
 
@@ -13,7 +14,7 @@
 .prop__tile__img__container__ img {
   width: 90%;
   height: 90%;
-  border-radius: 5%;
+  border-radius: 1rem;
 }
 
 .prop__tile__heading__ {
@@ -25,4 +26,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+button {
+  all: unset;
+  left: 50%;
 }

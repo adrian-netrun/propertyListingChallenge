@@ -61,7 +61,9 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
       </div>
       {/* render toggle Superhost Toggle switch */}
       <div className='filterToggle'>
-        <label htmlFor='toggle'>Superhost: </label>
+        <label htmlFor='toggle' className='toggleSwitchLabel'>
+          Superhost:
+        </label>
         <input
           type='checkbox'
           id='toggle'

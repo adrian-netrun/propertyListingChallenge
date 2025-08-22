@@ -17,3 +17,34 @@
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 1.8rem;
+  padding-bottom: 0.5rem;
+}
+
+.open {
+  border: 1.5px solid darkgrey;
+  border-radius: 1rem;
+  width: 10rem;
+  text-align: center;
+  padding: 0.2rem;
+}
+
+.close {
+  border: 0.01rem solid darkgrey;
+  width: 4rem;
+  text-align: center;
+  padding: 0.2rem;
+}
+
+.close:hover {
+  background-color: rgba(200, 12, 12, 0.5);
+}
+
+.buttonContainer .open:hover {
+  background-color: rgba(200, 12, 12, 0.5);
+}
