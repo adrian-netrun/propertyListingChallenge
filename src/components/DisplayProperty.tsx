@@ -45,6 +45,12 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
     setLocationObject(filteredData);
   }, [selecetedFilters, showSuperHost]);
 
+  const bgFilterButton = {
+    backgroundColor: '#C80C0C19',
+    padding: '0.3rem 0.7rem',
+    borderRadius: '0.rem',
+  };
+
   return (
     <div className='displayContainer'>
       <div className='filterGroup'>
@@ -54,10 +60,16 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
             key={idx}
             className='filterChoice'
             onClick={() => handleFilterClick(itm)}
+            style={selecetedFilters.includes(itm) ? bgFilterButton : undefined}
           >
             {itm}
           </button>
         ))}
+      </div>
+      <div className='clearFilterGroup'>
+        <button className='clearFilter' onClick={() => setSelectedFilters([])}>
+          Clear Filters
+        </button>
       </div>
       {/* render toggle Superhost Toggle switch */}
       <div className='filterToggle'>
