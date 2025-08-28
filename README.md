@@ -17,7 +17,16 @@ Tools used:
 
 Docker is for production deployment with a server compnent to deploy the build file.
 
-Colors:
+TODO:
 
-- #131726, background color
-- #e0e0e0, text colour
+- General
+  -- Add Highlights to selected filters
+  -- Add icons to property tiles
+  -- Add background color to 'More Information' button
+  -- Style modal popup, complete information rendering
+  -- Add silly tag line to hero bannder
+- Main view
+  -- set width for main page and modal
+  -- Style Modal pop up
+- Tablet View
+  -- Check if all view rendering is correct
