@@ -46,45 +46,54 @@ function DisplayProperty({ location, data }: IDisplayProperty) {
   }, [selecetedFilters, showSuperHost]);
 
   const bgFilterButton = {
-    backgroundColor: '#C80C0C19',
+    backgroundColor: '',
     padding: '0.3rem 0.7rem',
-    borderRadius: '0.rem',
+    borderRadius: '1rem',
+    textDecoration: 'underline',
   };
 
   return (
     <div className='displayContainer'>
-      <div className='filterGroup'>
-        {/* render out location filter buttons */}
-        {locations.map((itm, idx) => (
+      <div className='filterContainerMain'>
+        <div className='filterGroup'>
+          {/* render out location filter buttons */}
+          {locations.map((itm, idx) => (
+            <button
+              key={idx}
+              className='filterChoice'
+              onClick={() => handleFilterClick(itm)}
+              style={
+                selecetedFilters.includes(itm) ? bgFilterButton : undefined
+              }
+            >
+              {itm}
+            </button>
+          ))}
+        </div>
+        <div className='clearFilterGroup'>
           <button
-            key={idx}
-            className='filterChoice'
-            onClick={() => handleFilterClick(itm)}
-            style={selecetedFilters.includes(itm) ? bgFilterButton : undefined}
+            className='clearFilter'
+            onClick={() => setSelectedFilters([])}
           >
-            {itm}
+            Clear Filters
           </button>
-        ))}
+        </div>
+        {/* render toggle Superhost Toggle switch */}
+        <div className='filterToggle'>
+          <label htmlFor='toggle' className='toggleSwitchLabel'>
+            Superhost:
+          </label>
+          <input
+            type='checkbox'
+            id='toggle'
+            className='checkbox'
+            checked={showSuperHost}
+            onChange={(e) => setShowSuperHost(e.target.checked)}
+          />
+          <label htmlFor='toggle' className='switch'></label>
+        </div>
       </div>
-      <div className='clearFilterGroup'>
-        <button className='clearFilter' onClick={() => setSelectedFilters([])}>
-          Clear Filters
-        </button>
-      </div>
-      {/* render toggle Superhost Toggle switch */}
-      <div className='filterToggle'>
-        <label htmlFor='toggle' className='toggleSwitchLabel'>
-          Superhost:
-        </label>
-        <input
-          type='checkbox'
-          id='toggle'
-          className='checkbox'
-          checked={showSuperHost}
-          onChange={(e) => setShowSuperHost(e.target.checked)}
-        />
-        <label htmlFor='toggle' className='switch'></label>
-      </div>
+
       <div className='displayPropertyGroup'>
         {locationObject?.map((itm, idx) => {
           return (
